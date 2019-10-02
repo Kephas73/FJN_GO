@@ -45,7 +45,7 @@ func init()  {
 			log.Fatalln(exterror.WrapExtError(err))
 		}
 
-		//gLog.SetOutput(&BufWriter{bufWriter: gLogBuf, destWriter: fLog})
+		gLog.SetOutput(&BufWriter{bufWriter: gLogBuf, destWriter: fLog})
 	}
 	exterror.SetFilePathSpliter("RELEASE")
 }
