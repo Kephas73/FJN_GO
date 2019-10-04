@@ -19,9 +19,10 @@ const (
 	MSG_LOG_PG_SPACE    = "                  "
 	MSG_LOG_PG_START    = "=========================START==============================="
 	MSG_LOG_PG_END      = "==========================END================================="
-	MSG_LOG_PG_LINE     = "-------------------------------------------------------------"
+	MSG_LOG_PG_LINE     = "---------------------------------------------------------------"
 
 	FORMAT_TIME_NOW     = "2006/01/02 15:04:05"
+	SYMBOL_ARROW        = "->"
 )
 
 // Const LOG
@@ -34,6 +35,8 @@ const (
 
 // Const Create table
 const (
+	CFG_CREATE_TABLE            = "TABLE"
 	MSG_LOG_CREATE_TABLE_BEGIN  = "Begin the process of creating the GCE table..."
 	MSG_LOG_CREATE_TABLE_DONE  =  "Complete the process of creating the GCE table"
+	MSG_LOG_CREATE_TABLE        = "Create table [%v] -> [%v]"
 )
