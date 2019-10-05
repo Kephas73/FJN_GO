@@ -24,7 +24,7 @@ func InsertTableGCE() (eRR error) {
 	}
 
 	for _, v := range listExc {
-		numRecord := fmt.Sprint(CountRecordInssert(v.Sql))
+		numRecord := fmt.Sprint(CountRecordInsert(v.Sql))
 		gLog.Printf(MSG_LOG_INSERT_TABLE, v.Table, v.Path, numRecord)
 		_, err := db.DB.Exec(v.Sql)
 		if err != nil {
@@ -36,7 +36,7 @@ func InsertTableGCE() (eRR error) {
 	return nil
 }
 
-func CountRecordInssert(sql string) int {
+func CountRecordInsert(sql string) int {
 	v  := strings.Split(sql, "VALUES")
 	v1 := strings.Split(v[1],"),")
 	return len(v1)
