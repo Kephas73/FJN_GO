@@ -1,8 +1,6 @@
 package main
 
-import (
-	"Common"
-)
+import "Common"
 
 func main() {
 
@@ -11,16 +9,23 @@ func main() {
 	NAME_PROCESS := config.Str(PG_PROCESS,"")
 	gLog.Println(MSG_LOG_PG_SPACE,NAME_PROCESS)
 	gLog.Println(MSG_LOG_PG_START)
+	defer gLog.Println(MSG_LOG_PG_END)
+
 	if OK.CheckExits() {
 		gLog.Println(MSG_LOG_PG_LINE)
-		gLog.Println(MSG_LOG_PG_END)
 		return
 	}
-	defer gLog.Println(MSG_LOG_PG_END)
 	//-------------------------------------------
 
 	// B. Execute program
 	err := CreateTableGCE()
+	if err != nil {
+		gLog.Println(err)
+		gLog.Println(MSG_LOG_PG_LINE)
+		return
+	}
+
+	err = InsertTableGCE()
 	if err != nil {
 		gLog.Println(err)
 		gLog.Println(MSG_LOG_PG_LINE)

@@ -23,6 +23,7 @@ const (
 
 	FORMAT_TIME_NOW     = "2006/01/02 15:04:05"
 	SYMBOL_ARROW        = "->"
+	CHAR_SPACE          = " "
 )
 
 // Const LOG
@@ -39,4 +40,12 @@ const (
 	MSG_LOG_CREATE_TABLE_BEGIN  = "Begin the process of creating the GCE table..."
 	MSG_LOG_CREATE_TABLE_DONE  =  "Complete the process of creating the GCE table"
 	MSG_LOG_CREATE_TABLE        = "Create table [%v] -> [%v]"
+)
+
+// Const Insert table
+const (
+	CFG_INSERT_TABLE            = "DATA"
+	MSG_LOG_INSERT_TABLE_BEGIN  = "Begin the process of creating the GCE insert..."
+	MSG_LOG_INSERT_TABLE_DONE  =  "Complete the process of creating the GCE insert"
+	MSG_LOG_INSERT_TABLE        = "Insert table [%v] -> [%v] -> RECORD[%v]"
 )
