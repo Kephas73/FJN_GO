@@ -5,6 +5,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/goframework/gf/cfg"
 	"github.com/goframework/gf/exterror"
+	"strings"
 )
 
 type DBConnection struct {
@@ -82,13 +83,13 @@ func CreateDatabase(this *DBConnection) error {
 
 	// Check exits database
 	for _,v := range dbName {
-		if v == this.DBName {
+		if strings.ToUpper(v) == strings.ToUpper(this.DBName) {
 			flagDB ++
 		}
 	}
 
 	if flagDB == 0 {
-		_, err :=db.Exec(QUERY_CREATE_DATABASE + CHAR_SPACE + this.DBName)
+		_, err :=db.Exec(QUERY_CREATE_DATABASE + CHAR_SPACE + this.DBName + CHAR_SPACE + QUERY_CREATE_DATABASE_SET_CHARACTER)
 		if err != nil {
 			return exterror.WrapExtError(err)
 		}
@@ -99,3 +100,4 @@ func CreateDatabase(this *DBConnection) error {
 
 const QUERY_SHOW_DATABASE    = "SHOW DATABASES"
 const QUERY_CREATE_DATABASE  = "CREATE DATABASE"
+const QUERY_CREATE_DATABASE_SET_CHARACTER = "CHARACTER SET utf8 COLLATE utf8_unicode_ci"
