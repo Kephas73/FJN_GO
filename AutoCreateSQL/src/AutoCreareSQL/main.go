@@ -7,8 +7,11 @@ import (
 
 var maxCountRetry = 3
 
+type listFunc func() error
+
 func main() {
 
+	timeBegin := time.Now()
 	OK := OKLogger{config.Str(PG_NAME, ""), Common.GetDateTimeCurrent()}
 	// A. Information program
 	NAME_PROCESS := config.Str(PG_PROCESS, "")
@@ -17,6 +20,8 @@ func main() {
 	defer gLog.Println(MSG_LOG_PG_END)
 
 	if OK.CheckExits() {
+		SendMailError(MSG_LOG_FILE_OK_EXITS, timeBegin, time.Now())
+		gLog.Println(MSG_LOG_FILE_OK_EXITS)
 		gLog.Println(MSG_LOG_PG_LINE)
 		return
 	}
@@ -27,12 +32,14 @@ func main() {
 		err := func() error {
 			err1 := CreateTableGCE()
 			if err1 != nil {
+				SendMailError(err1.Error(), timeBegin, time.Now())
 				gLog.Println(err1)
 				gLog.Println(MSG_LOG_PG_LINE)
 				return err1
 			}
 			err1 = InsertTableGCE()
 			if err1 != nil {
+				SendMailError(err1.Error(), timeBegin, time.Now())
 				gLog.Println(err1)
 				gLog.Println(MSG_LOG_PG_LINE)
 				return err1
@@ -59,4 +66,20 @@ func main() {
 		gLog.Println(MSG_LOG_PG_LINE)
 		return
 	}
+
+	SendMailSuccess(timeBegin, time.Now())
+
+	// TODO: Option 2
+	/*list := []listFunc {
+		CreateTableGCE,
+		InsertTableGCE,
+	}
+	for _, v := range list{
+		err := v()
+		if err != nil {
+			gLog.Println(err)
+			gLog.Println(MSG_LOG_PG_LINE)
+			return
+		}
+	}*/
 }

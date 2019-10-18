@@ -35,18 +35,36 @@ const (
 	FILE_EXTENSION_LOG   = ".log"
 )
 
+// Const Setting Mail
+const (
+	CFG_MAIL_ENABLE         = "Mail.Enable"
+	CFG_MAIL_SERVER         = "Mail.Server"
+	CFG_MAIL_PORT           = "Mail.Port"
+	CFG_MAIL_USER           = "Mail.User"
+	CFG_MAIL_PASS           = "Mail.Pass"
+	CFG_MAIL_FROM_ADDRESS   = "Mail.FromAddress"
+	CFG_MAIL_FROM_NAME      = "Mail.FromName"
+	CFG_MAIL_TO_ADDRESS     = "Mail.ToAddress"
+	CFG_MAIL_TO_NAME        = "Mail.ToName"
+)
+
+
 // Const Create table
 const (
 	CFG_CREATE_TABLE           = "TABLE"
-	MSG_LOG_CREATE_TABLE_BEGIN = "Begin the process of creating the GCE table..."
-	MSG_LOG_CREATE_TABLE_DONE  = "Complete the process of creating the GCE table"
+	MSG_LOG_CREATE_TABLE_BEGIN = "Begin the process of create the GCE table..."
+	MSG_LOG_CREATE_TABLE_DONE  = "Complete the process of create the GCE table"
 	MSG_LOG_CREATE_TABLE       = "Create table [%v] -> [%v]"
 )
 
 // Const Insert table
 const (
 	CFG_INSERT_TABLE           = "DATA"
-	MSG_LOG_INSERT_TABLE_BEGIN = "Begin the process of creating the GCE insert..."
-	MSG_LOG_INSERT_TABLE_DONE  = "Complete the process of creating the GCE insert"
+	MSG_LOG_INSERT_TABLE_BEGIN = "Begin the process of insert the GCE table..."
+	MSG_LOG_INSERT_TABLE_DONE  = "Complete the process of insert the GCE table"
 	MSG_LOG_INSERT_TABLE       = "Insert table [%v] -> [%v] -> RECORD[%v]"
 )
+
+// Const File Exits
+const MSG_LOG_FILE_OK_EXITS       = "The process for today has ended on this device. To continue the process, please delete today's OKLog file."
+
