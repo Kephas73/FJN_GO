@@ -10,5 +10,5 @@ require (
 	github.com/spf13/pflag v1.0.3
 	github.com/tdewolff/parse/v2 v2.4.2-0.20191217133525-7b246f800500
 	github.com/tdewolff/test v1.0.6
-	golang.org/x/sys v0.0.0-20181031143558-9b800f95dbbc // indirect
+	golang.org/x/sys v0.1.0 // indirect
 )
